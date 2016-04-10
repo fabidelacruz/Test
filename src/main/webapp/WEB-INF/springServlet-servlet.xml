@@ -8,7 +8,19 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
-        
-        <context:component-scan base-package="test.marvel.domain" />
-        
+
+	<mvc:resources mapping="/*" location="classpath:web/" />
+	<mvc:resources mapping="/css/*" location="classpath:web/css/" />
+	<mvc:resources mapping="/js/*" location="classpath:web/js/" />
+
+	<context:component-scan base-package="test.marvel.domain" />
+
+	<mvc:annotation-driven >
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.ResourceHttpMessageConverter" />
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	
 </beans>
