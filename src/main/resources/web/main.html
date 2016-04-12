@@ -1,27 +1,39 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Marvel Characters</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		</head>
-	<body>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">WebSiteName</a>
-				</div>
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Page 1</a></li>
-					<li><a href="#">Page 2</a></li>
-					<li><a href="#">Page 3</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							Sign Up</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							Login</a></li>
-				</ul>
+<head>
+<title>Marvel Characters</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/main.js"></script>
+</head>
+<body ng-app="main-app">
+	<nav class="navbar navbar-inverse">
+		<div>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
 			</div>
-		</nav>
-	</body>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a id="characters-btn" class="btn">Characters</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div id="page" ng-controller="AppController as app">
+		<div class="container">
+			<a>Characters</a>
+			<table class="table table-hover">
+				<tr ng-repeat="character in characters">
+					<td>{{ character.name }}</td>
+					<td><img src="{{character.thumbnail.path}}/standard_medium.jpg" class="img-thumbnail"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
 </html>
